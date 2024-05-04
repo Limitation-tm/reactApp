@@ -42,7 +42,7 @@ const CartItem: React.FC<CartItemProps> = ({
         <div className="cart__item-img">
           <img
             className="pizza-block__image"
-            src={`http://localhost:4444${imageUrl}`}
+            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
             alt="Pizza"
           />
         </div>

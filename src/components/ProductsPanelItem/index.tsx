@@ -16,7 +16,6 @@ export type ProductsPanelItemProps = {
   delivery?: TUser;
   products: ICartItem[];
   createdAt: string;
-  numberId: number;
 };
 
 const ProductsPanelItem: React.FC<ProductsPanelItemProps> = ({
@@ -26,7 +25,6 @@ const ProductsPanelItem: React.FC<ProductsPanelItemProps> = ({
   delivery,
   products,
   createdAt,
-  numberId,
 }) => {
   const fullPrice = products.reduce(
     (sum: number, obj) => obj.price * obj.quantity + sum,
@@ -66,7 +64,7 @@ const ProductsPanelItem: React.FC<ProductsPanelItemProps> = ({
       <div className="cart__item">
         <div className="">
           <span onClick={() => setPopapOrder(!popupOrder)}>
-            #{numberId + 1} {new Date(createdAt).toDateString()}
+            # {new Date(createdAt).toDateString()}
           </span>
         </div>
 
@@ -78,7 +76,7 @@ const ProductsPanelItem: React.FC<ProductsPanelItemProps> = ({
                 <img
                   className="cart__item-img"
                   width="20"
-                  src={`http://localhost:4444${user.avatarUrl}`}
+                  src={`${process.env.REACT_APP_API_URL}${user.avatarUrl}`}
                   alt="UserImg"
                 />
               ) : (

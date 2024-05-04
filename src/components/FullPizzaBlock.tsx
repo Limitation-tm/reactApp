@@ -56,7 +56,7 @@ const FullPizzaBlock: React.FC<TFullPizzaBlockProps> = ({
     <div className="pizza-block">
       <img
         className="pizza-block__image"
-        src={`http://localhost:4444${imageUrl}`}
+        src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
         alt="Pizza"
       />
       <Link to={`/product/${_id}/edit`}>
