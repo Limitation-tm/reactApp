@@ -1,7 +1,7 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_LIMI, //http://localhost:4444
+  baseURL: process.env.REACT_APP_LIMI,
 });
 
 instance.interceptors.request.use((config: InternalAxiosRequestConfig<any>) => {
