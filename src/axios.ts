@@ -1,7 +1,7 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.VITE_APP_LIMI,
+  baseURL: import.meta.env.VITE_APP_LIMI,
 });
 
 instance.interceptors.request.use((config: InternalAxiosRequestConfig<any>) => {
