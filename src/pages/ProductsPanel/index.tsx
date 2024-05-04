@@ -37,8 +37,6 @@ const ProductsPanel: React.FC = () => {
   const delivery = activeOrder == 0 ? "" : _id;
   const dispatch = useAppDispatch();
 
-  const [numberId, setNumberId] = React.useState(total);
-
   const totalTrue = Boolean(total > items.length);
 
   const { ref, inView } = useInView({
@@ -92,7 +90,7 @@ const ProductsPanel: React.FC = () => {
             </div>
             <div className="content__items">
               {items.map((item, index) => (
-                <ProductsPanelItem key={item._id} {...item} numberId={index} />
+                <ProductsPanelItem key={item._id} {...item} />
               ))}
               {status !== "success" && skeletonData}
             </div>
