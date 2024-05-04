@@ -1,7 +1,7 @@
 import axios, { InternalAxiosRequestConfig } from "axios";
 
 const instance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL, //http://localhost:4444
+  baseURL: "https://jumpy-chartreuse-pyrite.glitch.me", //http://localhost:4444
 });
 
 instance.interceptors.request.use((config: InternalAxiosRequestConfig<any>) => {
