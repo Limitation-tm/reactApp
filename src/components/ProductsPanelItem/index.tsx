@@ -76,7 +76,7 @@ const ProductsPanelItem: React.FC<ProductsPanelItemProps> = ({
                 <img
                   className="cart__item-img"
                   width="20"
-                  src={`${process.env.REACT_APP_API_URL}${user.avatarUrl}`}
+                  src={`${import.meta.env.VITE_APP_LIMI}${user.avatarUrl}`}
                   alt="UserImg"
                 />
               ) : (

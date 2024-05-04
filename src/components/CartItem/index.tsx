@@ -42,7 +42,7 @@ const CartItem: React.FC<CartItemProps> = ({
         <div className="cart__item-img">
           <img
             className="pizza-block__image"
-            src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
+            src={`${import.meta.env.VITE_APP_LIMI}${imageUrl}`}
             alt="Pizza"
           />
         </div>

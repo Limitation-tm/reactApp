@@ -66,13 +66,13 @@ export const Me: React.FC = () => {
         {avatarUrl ? (
           <img
             className={styles.image}
-            src={`${process.env.REACT_APP_API_URL}${avatarUrl}`}
+            src={`${import.meta.env.VITE_APP_LIMI}${avatarUrl}`}
             alt="Pizza"
           />
         ) : data?.avatarUrl ? (
           <img
             className={styles.image}
-            src={`${process.env.REACT_APP_API_URL}${data.avatarUrl}`}
+            src={`${import.meta.env.VITE_APP_LIMI}${data.avatarUrl}`}
             alt="Pizza"
           />
         ) : (

@@ -56,7 +56,7 @@ const FullPizzaBlock: React.FC<TFullPizzaBlockProps> = ({
     <div className="pizza-block">
       <img
         className="pizza-block__image"
-        src={`${process.env.REACT_APP_API_URL}${imageUrl}`}
+        src={`${import.meta.env.VITE_APP_LIMI}${imageUrl}`}
         alt="Pizza"
       />
       <Link to={`/product/${_id}/edit`}>
