@@ -10,6 +10,7 @@ import PageEmpty from "../components/PageEmpty";
 import { Pagination } from "../components/Pagination";
 import Search from "../components/Search";
 import { RootState, useAppDispatch } from "../redux/store";
+import { isMobile } from "react-device-detect";
 
 const Home: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -66,11 +67,13 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="content__top">
-        <Categories activeCat={activeCat} setActiveCat={onClickCategory} />
-        <Search />
-        <Sort orderProp={orderProp} setOrderProp={setOrderProp} />
-      </div>
+      {!isMobile && (
+        <div className="content__top">
+          <Categories activeCat={activeCat} setActiveCat={onClickCategory} />
+          <Search />
+          <Sort orderProp={orderProp} setOrderProp={setOrderProp} />
+        </div>
+      )}
       <h2 className="content__title">All Products</h2>
       <div className="content__items">
         {status == "error" ? (
@@ -79,13 +82,16 @@ const Home: React.FC = () => {
           <>{status == "loading" ? skeletonData : burgersData}</>
         )}
       </div>
-      {pageTotal > 1 && (
-        <Pagination
-          pageTotal={pageTotal}
-          currentPage={currentPage}
-          onChangePage={onChangePage}
-        />
-      )}
+      <div className="pagination">
+        {" "}
+        {pageTotal > 1 && (
+          <Pagination
+            pageTotal={pageTotal}
+            currentPage={currentPage}
+            onChangePage={onChangePage}
+          />
+        )}
+      </div>
     </>
   );
 };

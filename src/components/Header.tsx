@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuth } from "../redux/slices/authSlice";
 import React from "react";
 import { RootState } from "../redux/store";
+import { isMobile } from "react-device-detect";
 
 function Header() {
   const { totalPrice, items } = useSelector(
@@ -33,46 +34,49 @@ function Header() {
       <div className="container">
         <Link to="/">
           <div className="header__logo">
-            <img width="38" src={logoImg} alt="Pizza logo" />
+            {/* <img width="38" src={logoImg} alt="Pizza logo" /> */}
             <div>
               <h1>Town & Village</h1>
               <p>Choose your style</p>
             </div>
           </div>
         </Link>
-
-        {isAuth && data?.role === "Admin" && (
-          <Link to="/product/create" className="button">
-            New
-          </Link>
-        )}
-        {window.localStorage.getItem("token") ? (
+        {!isMobile && (
           <>
-            <div>
-              <Link to="/me">
-                <div>{data?.fullName}</div>
+            {isAuth && data?.role === "Admin" && (
+              <Link to="/product/create" className="button">
+                New
               </Link>
-            </div>
-            <div>
-              {data?.role === "Admin" ? (
-                <>
-                  <Link to={`/admin/productspanel/${data._id}`}>
-                    <div>Orders</div>
+            )}
+            {window.localStorage.getItem("token") ? (
+              <>
+                <div>
+                  <Link to="/me">
+                    <div>{data?.fullName}</div>
                   </Link>
-                </>
-              ) : (
-                <Link to="/myorders">
-                  <div>My Orders</div>
+                </div>
+                <div>
+                  {data?.role === "Admin" ? (
+                    <>
+                      <Link to={`/admin/productspanel/${data._id}`}>
+                        <div>Orders</div>
+                      </Link>
+                    </>
+                  ) : (
+                    <Link to="/myorders">
+                      <div>My Orders</div>
+                    </Link>
+                  )}
+                </div>
+              </>
+            ) : (
+              <div>
+                <Link to="/login">
+                  <div>Войти</div>
                 </Link>
-              )}
-            </div>
+              </div>
+            )}
           </>
-        ) : (
-          <div>
-            <Link to="/login">
-              <div>Войти</div>
-            </Link>
-          </div>
         )}
         {location.pathname !== "/cart" && (
           <div className="header__cart">
